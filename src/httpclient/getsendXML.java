@@ -1,5 +1,7 @@
 package httpclient;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -10,6 +12,8 @@ import httpclient.HttpClientBase;
 
 public class getsendXML {
 	
+	static Logger logger = Logger.getLogger(getsendXML.class.getName());
+	
 	public HTTPResponseData getxml(final String username, final String password, String url, String contentType)
 			throws SAXException, IOException, ParserConfigurationException {
 		HttpClientBase getPolicies = new HttpClientBase();
@@ -18,7 +22,7 @@ public class getsendXML {
 			
 			
 		} else{
-			System.out.println("Error getting policies");
+			logger.log(Level.WARNING,"Error getting policies");
 		}
 		
 		return result;
@@ -33,7 +37,7 @@ public class getsendXML {
 			
 			
 		} else{
-			System.out.println("Error getting policies");
+			logger.log(Level.WARNING,"Error getting policies");
 		}
 		
 		return result;
@@ -47,7 +51,7 @@ public class getsendXML {
 			
 			
 		} else{
-			System.out.println("Error getting policies");
+			logger.log(Level.WARNING,"Error getting policies");
 		}
 		
 		return result;

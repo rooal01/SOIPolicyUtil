@@ -8,6 +8,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import utils.CreateAction;
+
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
@@ -15,10 +18,14 @@ import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 	
 public class GetPolicyID {
 	
-	public String getDom(Document doc, String filter) throws SAXException, IOException, ParserConfigurationException{
+	static Logger logger = Logger.getLogger(GetPolicyID.class.getName());
+	
+	public String getDom(Document doc, String filter, boolean expected) throws SAXException, IOException, ParserConfigurationException{
 		String policyid = null;
 		//optional, but recommended
 		//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
@@ -33,8 +40,9 @@ public class GetPolicyID {
 		
 		if (numofpolicies == 0) {
 			
-//		
-			System.out.println("No policyID found");
+			if(expected){
+			logger.log(Level.WARNING,"No policyID found");
+			}
 			return policyid;
 			
 		} else {

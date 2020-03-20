@@ -1,20 +1,21 @@
 package utils;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import configuration.Config;
 import entities.ActionPolicy;
 import httpclient.HTTPResponseData;
-import httpclient.getsendXML;
-import main.SOIPolicyUtil;
 
 public class CreateAction {
 	
-	getsendXML myaction = new getsendXML();
-	SOIPolicyUtil policyUtil = new SOIPolicyUtil();
+	Config config = configuration.Config.getInstance();
+	static Logger logger = Logger.getLogger(CreateAction.class.getName());
 	
 	public Boolean create(ActionPolicy actp, String URL, String contentType, String UserName, String Password) throws SAXException, IOException, ParserConfigurationException{
 		
@@ -23,9 +24,9 @@ public class CreateAction {
 		String name = actp.getName();
 		String[] args = {"dummy",name};
 		
-		if(policyUtil.getAction(args)){
+		if(config.commands.getAction(args, false)){
 			
-			System.out.println("Action already exists. Name = "+ name);
+			logger.log(Level.WARNING,"Action already exists. Name = "+ name);
 			return false;
 		} else {
 
@@ -33,7 +34,7 @@ public class CreateAction {
 		//Check if policy already exists
 		
 		
-		HTTPResponseData result = myaction.postxml(UserName, Password, URL, contentType, urlbody);
+		HTTPResponseData result = config.myaction.postxml(UserName, Password, URL, contentType, urlbody);
 		
 		if(result.responseCode == 200){
 			return true;

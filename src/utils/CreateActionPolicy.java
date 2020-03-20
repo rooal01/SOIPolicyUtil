@@ -1,8 +1,12 @@
 package utils;
 
+import java.util.logging.Logger;
+
 import entities.ActionPolicy;
 
+
 public class CreateActionPolicy {
+	static Logger logger = Logger.getLogger(CreateActionPolicy.class.getName());
 	
 	public ActionPolicy createActionPolicy(String[] policy){
 		

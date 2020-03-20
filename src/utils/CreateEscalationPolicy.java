@@ -2,12 +2,14 @@ package utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import entities.ActionPolicy;
 import entities.EscalationPolicy;
 
 public class CreateEscalationPolicy {
 	
+	static Logger logger = Logger.getLogger(CreateEscalationPolicy.class.getName());
 public EscalationPolicy createEscalationPolicy(String[] policy){
 		
 		

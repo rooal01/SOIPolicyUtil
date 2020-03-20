@@ -6,9 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import main.SOIPolicyUtil;
 
 public class ProcessFile {
 	
+	static Logger logger = Logger.getLogger(ProcessFile.class.getName());
 	public List<String[]> processFile(String FileName, int ParamCount){
 		
 		List<String[]> allPolicies = new ArrayList<String[]>();
@@ -27,7 +32,7 @@ public class ProcessFile {
                 String[] policySetting = line.split(cvsSplitBy);
                 if(policySetting.length < ParamCount) {
 
-                System.out.println("Cound not process line number: "+lineCount+ " Expected number of parameters = "+ ParamCount + " found = " + policySetting.length);
+                	logger.log(Level.WARNING,"Cound not process line number: "+lineCount+ " Expected number of parameters = "+ ParamCount + " found = " + policySetting.length);
 
             } else {
             	
