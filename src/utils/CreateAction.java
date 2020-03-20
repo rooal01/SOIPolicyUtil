@@ -10,12 +10,18 @@ import org.xml.sax.SAXException;
 
 import configuration.Config;
 import entities.ActionPolicy;
+import httpclient.GetPolicyID;
 import httpclient.HTTPResponseData;
+import httpclient.getsendXML;
+import main.Commands;
 
 public class CreateAction {
 	
 	Config config = configuration.Config.getInstance();
 	static Logger logger = Logger.getLogger(CreateAction.class.getName());
+	public Commands commands = new Commands();
+	getsendXML myaction = new getsendXML();
+
 	
 	public Boolean create(ActionPolicy actp, String URL, String contentType, String UserName, String Password) throws SAXException, IOException, ParserConfigurationException{
 		
@@ -24,7 +30,7 @@ public class CreateAction {
 		String name = actp.getName();
 		String[] args = {"dummy",name};
 		
-		if(config.commands.getAction(args, false)){
+		if(commands.getAction(args, false)){
 			
 			logger.log(Level.WARNING,"Action already exists. Name = "+ name);
 			return false;
@@ -34,7 +40,7 @@ public class CreateAction {
 		//Check if policy already exists
 		
 		
-		HTTPResponseData result = config.myaction.postxml(UserName, Password, URL, contentType, urlbody);
+		HTTPResponseData result = myaction.postxml(UserName, Password, URL, contentType, urlbody);
 		
 		if(result.responseCode == 200){
 			return true;

@@ -14,14 +14,20 @@ import configuration.Config;
 import entities.ActionPolicy;
 import entities.EscalationPolicy;
 import entities.EscalationPolicyAction;
+import httpclient.GetPolicyID;
 import httpclient.HTTPResponseData;
 import httpclient.getsendXML;
+import main.Commands;
 import main.SOIPolicyUtil;
 
 public class CreatePolicy {
 	
 	Config config = configuration.Config.getInstance();
 	static Logger logger = Logger.getLogger(CreatePolicy.class.getName());
+	public Commands commands = new Commands();
+	getsendXML myaction = new getsendXML();
+	GetPolicyID getPolicyID = new GetPolicyID();
+	
 	
 	public Boolean create(EscalationPolicy escp, String URL, String contentType, String UserName, String Password) throws SAXException, IOException, ParserConfigurationException{
 		
@@ -29,7 +35,7 @@ public class CreatePolicy {
 		String name = escp.getName();
 		//mAKE SURE THAT THE POLICY DOES NOT ALREADY EXIST
 		String[] args = {"dummy",name};
-		if(config.commands.getPolicy(args, false)){
+		if(commands.getPolicy(args, false)){
 			
 			logger.log(Level.WARNING,"Escalation Policy already exists. Name = "+ name);
 			return false;
@@ -41,7 +47,7 @@ public class CreatePolicy {
 		actions = escp.getActionPolicy();
 		for (int i = 0; i < actions.size(); i++) {
 			String[] tempact = {"dummy",actions.get(i)};
-			String actionid = config.commands.getActionID(tempact, true);
+			String actionid = commands.getActionID(tempact, true);
 			if(actionid == null){
 				logger.log(Level.WARNING,"No action found with name "+ actions.get(i) + " Policy "+name+" will not be created");
 				return false;
@@ -53,7 +59,7 @@ public class CreatePolicy {
 
 			
 
-		HTTPResponseData result = config.myaction.postxml(UserName, Password, URL, contentType, urlbody);
+		HTTPResponseData result = myaction.postxml(UserName, Password, URL, contentType, urlbody);
 		
 		if(result.responseCode == 201){
 			
@@ -66,7 +72,7 @@ public class CreatePolicy {
 			urlbody = escPolAct.getBody();
 			
 
-			result = config.myaction.putxml(UserName, Password, URL, contentType, urlbody);
+			result = myaction.putxml(UserName, Password, URL, contentType, urlbody);
 			
 			if(result.responseCode == 200){
 

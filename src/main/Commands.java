@@ -18,7 +18,9 @@ import configuration.MyLogger;
 import entities.ActionPolicy;
 import entities.EscalationPolicy;
 import httpclient.GetDOM;
+import httpclient.GetPolicyID;
 import httpclient.HTTPResponseData;
+import httpclient.getsendXML;
 import utils.CreateAction;
 import utils.CreateActionPolicy;
 import utils.CreateEscalationPolicy;
@@ -30,6 +32,8 @@ public class Commands {
 	static Logger logger = Logger.getLogger(Commands.class.getName());
 	static MyLogger mylogger= new MyLogger();
 	Config config = configuration.Config.getInstance();
+	getsendXML myaction = new getsendXML();
+	GetPolicyID getPolicyID = new GetPolicyID();
 	
 	public boolean getAction(String[] args, boolean expected) throws SAXException, IOException, ParserConfigurationException{
 		//policy filter name is the second parameter
@@ -37,9 +41,9 @@ public class Commands {
 	String actionFilter = args[1];
 	String ContentType = "application/atom+xml";
 	String ActionURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicyAction?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
-	result = config.myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
+	result = myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
 	Document doc = processDom(result.responseBody);
-	String policydetails = config.getPolicyID.getDom(doc, actionFilter, expected);
+	String policydetails = getPolicyID.getDom(doc, actionFilter, expected);
 	
 	
 	if(policydetails == null){
@@ -51,7 +55,7 @@ public class Commands {
 	}
 	ContentType = "application/xml";
 	
-	result = config.myaction.getxml(config.UserName, config.Password, policydetails, ContentType);
+	result = myaction.getxml(config.UserName, config.Password, policydetails, ContentType);
 	
 	if(result.responseCode == 200){
 		System.out.println("##################Start Response Body###########");
@@ -70,9 +74,9 @@ public class Commands {
 	String actionFilter = args[1];
 	String ContentType = "application/atom+xml";
 	String ActionURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicyAction?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
-	result = config.myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
+	result = myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
 	Document doc = processDom(result.responseBody);
-	String policydetails = config.getPolicyID.getDom(doc, actionFilter, expected);
+	String policydetails = getPolicyID.getDom(doc, actionFilter, expected);
 	
 	if(policydetails == null){
 		logger.log(Level.WARNING, config.mess.NoPolicy + actionFilter);
@@ -91,9 +95,9 @@ public class Commands {
 		String actionFilter = args[1];
 		String ContentType = "application/atom+xml";
 		String ActionURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicy?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
-		result = config.myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
+		result = myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
 		Document doc = processDom(result.responseBody);
-		policydetails = config.getPolicyID.getDom(doc, actionFilter, expected);
+		policydetails = getPolicyID.getDom(doc, actionFilter, expected);
 		
 		
 		if(policydetails == null){
@@ -104,7 +108,7 @@ public class Commands {
 		}
 		
 		ContentType = "application/xml";
-		result = config.myaction.getxml(config.UserName, config.Password, policydetails, ContentType);
+		result = myaction.getxml(config.UserName, config.Password, policydetails, ContentType);
 		
 		if(result.responseCode == 200){
 			

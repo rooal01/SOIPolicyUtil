@@ -15,10 +15,7 @@ public class Config {
 	public String UserName ="alan";
 	public String Password = "Password1";
 	public Messages mess;
-	public getsendXML myaction = new getsendXML();
-	public GetPolicyID getPolicyID = new GetPolicyID();
-	public Commands commands = new Commands();
-	
+		
 	public Config(){
 		
 	}
