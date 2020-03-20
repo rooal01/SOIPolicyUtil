@@ -64,9 +64,7 @@ public class CreatePolicy {
 			escPolAct.setIds(ids);
 			urlbody = escPolAct.getBody();
 			
-			System.out.println(URL);
-			System.out.println(contentType);
-			System.out.println(urlbody);
+
 			result = myaction.putxml(UserName, Password, URL, contentType, urlbody);
 			
 			if(result.responseCode == 200){
