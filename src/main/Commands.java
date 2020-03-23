@@ -35,7 +35,7 @@ public class Commands {
 	getsendXML myaction = new getsendXML();
 	GetPolicyID getPolicyID = new GetPolicyID();
 	
-	public boolean getAction(String[] args, boolean expected) throws SAXException, IOException, ParserConfigurationException{
+	public boolean getAction(String[] args, boolean expected, boolean printResponse) throws SAXException, IOException, ParserConfigurationException{
 		//policy filter name is the second parameter
     HTTPResponseData result;	
 	String actionFilter = args[1];
@@ -58,9 +58,12 @@ public class Commands {
 	result = myaction.getxml(config.UserName, config.Password, policydetails, ContentType);
 	
 	if(result.responseCode == 200){
-		System.out.println("##################Start Response Body###########");
-		System.out.println(result.responseBody);
-		System.out.println("##################End Response Body###########");
+		if(printResponse){
+			System.out.println("##################Start Response Body###########");
+			System.out.println(result.responseBody);
+			System.out.println("##################End Response Body###########");	
+		}
+		
 		return true;
 	}
 	return false;
@@ -88,7 +91,7 @@ public class Commands {
 		
 	}
 	
-	public boolean getPolicy(String[] args, boolean expected) throws SAXException, IOException, ParserConfigurationException{
+	public boolean getPolicy(String[] args, boolean expected, boolean printResponse) throws SAXException, IOException, ParserConfigurationException{
 		
 		HTTPResponseData result;
 		String policydetails =  null;
@@ -111,10 +114,11 @@ public class Commands {
 		result = myaction.getxml(config.UserName, config.Password, policydetails, ContentType);
 		
 		if(result.responseCode == 200){
-			
-			System.out.println("##################Start Response Body###########");
-			System.out.println(result.responseBody);
-			System.out.println("##################End Response Body###########");
+			if(printResponse){
+				System.out.println("##################Start Response Body###########");
+				System.out.println(result.responseBody);
+				System.out.println("##################End Response Body###########");	
+			}
 			return true;
 		}
 		return false;
@@ -123,7 +127,7 @@ public class Commands {
 	public void createAction(String[] args) throws SAXException, IOException, ParserConfigurationException{
 		
 		String filename = args[1];
-		int actionParmCount = 4;
+		int actionParmCount = config.ActionPropertyCount;
 		ProcessFile pfile = new ProcessFile();
 		CreateActionPolicy createActionP = new CreateActionPolicy();
 		CreateAction createAction = new CreateAction();
@@ -166,7 +170,7 @@ public class Commands {
 public void createPolicy(String[] args) throws SAXException, IOException, ParserConfigurationException{
 		
 		String filename = args[1];
-		int actionParmCount = 4;
+		int actionParmCount = config.PolicyPropertyCount;
 		ProcessFile pfile = new ProcessFile();
 		CreateEscalationPolicy createEscalationP = new CreateEscalationPolicy();
 		CreatePolicy createPolicy = new CreatePolicy();

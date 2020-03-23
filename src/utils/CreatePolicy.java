@@ -35,7 +35,7 @@ public class CreatePolicy {
 		String name = escp.getName();
 		//mAKE SURE THAT THE POLICY DOES NOT ALREADY EXIST
 		String[] args = {"dummy",name};
-		if(commands.getPolicy(args, false)){
+		if(commands.getPolicy(args, false, false)){
 			
 			logger.log(Level.WARNING,"Escalation Policy already exists. Name = "+ name);
 			return false;

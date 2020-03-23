@@ -9,6 +9,7 @@ public class Messages {
 	
 	Messages(){
 		
+		//Could use Java commons CLI stuff for this
 		InvalidParam = "Invalid Parameters Passed to command line.\n"
 				+ "Valid parameters are as follows:\n"
 				+ "[getAction|getPolicy|createAction|createPolicy] [file name for create options|name of policy for get option.]\n"
@@ -18,6 +19,7 @@ public class Messages {
 				+ "Create action policy:\n\n  CreateAction action_policy_file_name \n\n"
 				+ "Create escalation policy:\n\n  CreatePolicy escalation_policy_file_name \n\n"
 				+ "";
+		
 		
 		FileNotFound = "File cannot be read: ";
 		

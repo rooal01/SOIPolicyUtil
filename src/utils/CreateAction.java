@@ -30,7 +30,7 @@ public class CreateAction {
 		String name = actp.getName();
 		String[] args = {"dummy",name};
 		
-		if(commands.getAction(args, false)){
+		if(commands.getAction(args, false, false)){
 			
 			logger.log(Level.WARNING,"Action already exists. Name = "+ name);
 			return false;
