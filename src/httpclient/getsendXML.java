@@ -33,11 +33,11 @@ public class getsendXML {
 			throws SAXException, IOException, ParserConfigurationException {
 		HttpClientBase getPolicies = new HttpClientBase();
 		HTTPResponseData result = getPolicies.openPostConnection(username, password, url, contentType, policy);
-		if(result.responseCode == 200) {
+		if(result.responseCode == 200||result.responseCode == 201) {
 			
 			
 		} else{
-			logger.log(Level.WARNING,"Error getting policies");
+			logger.log(Level.WARNING,"Error creating policies");
 		}
 		
 		return result;

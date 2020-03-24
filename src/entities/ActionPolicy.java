@@ -4,12 +4,60 @@ public class ActionPolicy {
 	
 	String name;
 	String description;
-	String userAttrib1;
-	String userAttrib2;
+	String userAttrib4;
+	String userAttrib5;
+	String userAttrib6;
+	String userAttrib7;
+	String userAttrib8;
+	String userAttrib9;
+	String userAttrib10;
+	
 	String POSTbody;
 	String endpoint;
 	
-		
+	
+	public String getUserAttrib4() {
+		return userAttrib4;
+	}
+	public void setUserAttrib4(String userAttrib4) {
+		this.userAttrib4 = userAttrib4;
+	}
+	public String getUserAttrib5() {
+		return userAttrib5;
+	}
+	public void setUserAttrib5(String userAttrib5) {
+		this.userAttrib5 = userAttrib5;
+	}
+	public String getUserAttrib6() {
+		return userAttrib6;
+	}
+	public void setUserAttrib6(String userAttrib6) {
+		this.userAttrib6 = userAttrib6;
+	}
+	public String getUserAttrib7() {
+		return userAttrib7;
+	}
+	public void setUserAttrib7(String userAttrib7) {
+		this.userAttrib7 = userAttrib7;
+	}
+	public String getUserAttrib8() {
+		return userAttrib8;
+	}
+	public void setUserAttrib8(String userAttrib8) {
+		this.userAttrib8 = userAttrib8;
+	}
+	public String getUserAttrib9() {
+		return userAttrib9;
+	}
+	public void setUserAttrib9(String userAttrib9) {
+		this.userAttrib9 = userAttrib9;
+	}
+	public String getUserAttrib10() {
+		return userAttrib10;
+	}
+	public void setUserAttrib10(String userAttrib10) {
+		this.userAttrib10 = userAttrib10;
+	}
 	public String getEndpoint() {
 		return endpoint;
 	}
@@ -31,18 +79,7 @@ public class ActionPolicy {
 	}
 	
 
-	public String getUserAttrib1() {
-		return userAttrib1;
-	}
-	public void setUserAttrib1(String userAttrib1) {
-		this.userAttrib1 = userAttrib1;
-	}
-	public String getUserAttrib2() {
-		return userAttrib2;
-	}
-	public void setUserAttrib2(String userAttrib2) {
-		this.userAttrib2 = userAttrib2;
-	}
+
 	public String getPOSTbody() {
 		
 		StringBuilder body = new StringBuilder();
@@ -61,7 +98,7 @@ public class ActionPolicy {
 		body.append("			<sam_action_type>7</sam_action_type>");
 		body.append("            <sam_action_enabled>True</sam_action_enabled>");
 		body.append("			<sam_action_propertyset_id_1>1</sam_action_propertyset_id_1>");
-		body.append("			<sam_action_propertyset_xml_1>&amp;lt;propertyset type=&amp;quot;default&amp;quot;&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76545&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib1+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76546&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib2+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;/propertyset&amp;gt;</sam_action_propertyset_xml_1>");
+		body.append("			<sam_action_propertyset_xml_1>&amp;lt;propertyset type=&amp;quot;default&amp;quot;&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76548&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib4+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76549&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib5+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76593&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib6+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76594&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib7+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76595&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib8+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76596&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib9+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;property create=&amp;quot;false&amp;quot;&amp;gt;&amp;lt;name&amp;gt;76597&amp;lt;/name&amp;gt;&amp;lt;value&amp;gt;&amp;lt;![CDATA["+userAttrib10+"]]&amp;gt;&amp;lt;/value&amp;gt;&amp;lt;/property&amp;gt;&amp;lt;/propertyset&amp;gt;</sam_action_propertyset_xml_1>");
 		body.append("			<ns11:item_name>"+name+"</ns11:item_name>");
 		body.append("			<ns11:item_description>"+description+"</ns11:item_description>");
 		body.append("		</ns11:EscalationpolicyAction>");

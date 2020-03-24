@@ -68,7 +68,6 @@ public class SOIPolicyUtil {
 		//Read input to determine which command has been run
 		Messages mess = new Messages();
 		if(args.length < 2){
-			logger.log(Level.INFO, mess.InvalidParam);
 			formatter.printHelp("SOIPolicyUtil", Commandline.cmdopts());
 			System.exit(1);
 		}
@@ -95,8 +94,6 @@ public class SOIPolicyUtil {
 			  commands.createAction(args);
 		  }
 		  else {
-
-			  logger.log(Level.FINE, mess.InvalidParam);
 			  
 			  formatter.printHelp("SOIPolicyUtil", Commandline.cmdopts());
 		}

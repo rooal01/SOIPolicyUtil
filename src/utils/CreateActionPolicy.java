@@ -15,8 +15,13 @@ public class CreateActionPolicy {
 		
 		actpolicy.setName(policy[0]);
 		actpolicy.setDescription(policy[1]);
-		actpolicy.setUserAttrib1(policy[2]);
-		actpolicy.setUserAttrib2(policy[3]);
+		actpolicy.setUserAttrib4(policy[2]);
+		actpolicy.setUserAttrib5(policy[3]);
+		actpolicy.setUserAttrib6(policy[4]);
+		actpolicy.setUserAttrib7(policy[5]);
+		actpolicy.setUserAttrib8(policy[6]);
+		actpolicy.setUserAttrib9(policy[7]);
+		actpolicy.setUserAttrib10(policy[8]);
 
 		
 		return actpolicy;

@@ -19,9 +19,31 @@ public class EscalationPolicy {
 	Boolean advancedType = false;
 	String POSTContent;
 	String containsString;
+	String sourceContains;
+	String userAttr2Contains;
+	String userAttr2NotContains;
 	String endpoint;
 	
 	
+	
+	public String getSourceContains() {
+		return sourceContains;
+	}
+	public void setSourceContains(String sourceContains) {
+		this.sourceContains = sourceContains;
+	}
+	public String getUserAtt2Contains() {
+		return userAttr2Contains;
+	}
+	public void setUserAtt2Contains(String userAtt2Contains) {
+		this.userAttr2Contains = userAtt2Contains;
+	}
+	public String getUserAttr2NotContains() {
+		return userAttr2NotContains;
+	}
+	public void setUserAttr2NotContains(String userAttr2NotContains) {
+		this.userAttr2NotContains = userAttr2NotContains;
+	}
 	public String getEndpoint() {
 		return endpoint;
 	}
@@ -134,11 +156,38 @@ public class EscalationPolicy {
 		body.append("&lt;esc-policy&gt;");
 		body.append("&lt;attr-filter&gt;");
 		body.append("&lt;and&gt;");
+		
+		if(!containsString.isEmpty()){
 		body.append("&lt;has-substring-ignore-case&gt;");
 		body.append("&lt;attribute id=\"0x12948\"&gt;");
 		body.append("&lt;value&gt;"+containsString+"&lt;/value&gt;");
 		body.append("&lt;/attribute&gt;");
 		body.append("&lt;/has-substring-ignore-case&gt;");
+		}
+		if(!sourceContains.isEmpty()){
+		body.append("&lt;has-substring-ignore-case&gt;");
+		body.append("&lt;attribute id=\"0x11f9b\"&gt;");
+		body.append("&lt;value&gt;"+sourceContains+"&lt;/value&gt;");
+		body.append("&lt;/attribute&gt;");
+		body.append("&lt;/has-substring-ignore-case&gt;");
+		}
+		
+		if(!userAttr2NotContains.isEmpty()){
+		body.append("&lt;does-not-have-substring-ignore-case&gt;");
+		body.append("&lt;attribute id=\"0x12b02\"&gt;");
+		body.append("&lt;value&gt;"+userAttr2NotContains+"&lt;/value&gt;");
+		body.append("&lt;/attribute&gt;");
+		body.append("&lt;/does-not-have-substring-ignore-case&gt;");
+		}
+		
+		if(!userAttr2Contains.isEmpty()){
+		body.append("&lt;has-substring-ignore-case&gt;");
+		body.append("&lt;attribute id=\"0x12b02\"&gt;");
+		body.append("&lt;value&gt;"+userAttr2Contains+"&lt;/value&gt;");
+		body.append("&lt;/attribute&gt;");
+		body.append("&lt;/has-substring-ignore-case&gt;");
+		}
+		
 		body.append("&lt;/and&gt;");
 		body.append("&lt;/attr-filter&gt;");
 		body.append("&lt;/esc-policy&gt;");
