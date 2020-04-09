@@ -15,18 +15,19 @@ public EscalationPolicy createEscalationPolicy(String[] policy){
 		
 	EscalationPolicy escpolicy = new EscalationPolicy();
 		
-	    int count = policy.length - 6;// get the amount of actions to be added
+	    int count = policy.length - 7;// get the amount of actions to be added
 	    List<String> actions= new ArrayList<String>();
 	    for (int i = 0; i < count; i++) {
-	    	actions.add(policy[i+6]);
+	    	actions.add(policy[i+7]);
 		}
-
-		escpolicy.setName(policy[0]);
-		escpolicy.setDescription(policy[1]);
-		escpolicy.setContainsString(policy[2]);
-		escpolicy.setSourceContains(policy[3]);
-		escpolicy.setUserAtt2Contains(policy[4]);
-		escpolicy.setUserAttr2NotContains(policy[5]);
+	    
+	    escpolicy.setSOIService(policy[0]);
+		escpolicy.setName(policy[1]);
+		escpolicy.setDescription(policy[2]);
+		escpolicy.setContainsString(policy[3]);
+		escpolicy.setSourceContains(policy[4]);
+		escpolicy.setUserAtt2Contains(policy[5]);
+		escpolicy.setUserAttr2NotContains(policy[6]);
 		escpolicy.setActionPolicy(actions); //This is the name of the action policy to add. Might be a number so this could be an array
 		//TODO the rest of the properties
 

@@ -368,7 +368,7 @@ public class HttpClientBase
 
             setBasicAuth(user, password);
             conn.setRequestProperty("Content-type", ContentType);
-            conn.setRequestProperty( "Accept", "text/html, application/xml, *;q=0.1");
+            conn.setRequestProperty( "Accept", "application/xml");
             conn.setDoOutput(true);
 //            System.out.println("Body to be sent" + putXML);
             

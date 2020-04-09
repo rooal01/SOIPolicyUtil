@@ -50,6 +50,7 @@ public class getsendXML {
 		if(result.responseCode == 200) {
 			
 			
+			
 		} else{
 			logger.log(Level.WARNING,"Error getting policies");
 		}

@@ -5,6 +5,7 @@ public class Messages {
 	static String InvalidParam;
 	static String FileNotFound;
 	static String NoPolicy;
+	static String NoService;
 	
 	
 	Messages(){
@@ -24,6 +25,8 @@ public class Messages {
 		FileNotFound = "File cannot be read: ";
 		
 		NoPolicy="No policy found with name: ";
+		
+		NoService="No service found with name: ";
 	}
 
 }

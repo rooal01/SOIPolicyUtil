@@ -23,9 +23,18 @@ public class EscalationPolicy {
 	String userAttr2Contains;
 	String userAttr2NotContains;
 	String endpoint;
+	String SOIService;
 	
 	
 	
+	
+	
+	public String getSOIService() {
+		return SOIService;
+	}
+	public void setSOIService(String sOIService) {
+		SOIService = sOIService;
+	}
 	public String getSourceContains() {
 		return sourceContains;
 	}

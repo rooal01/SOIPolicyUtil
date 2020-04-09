@@ -45,7 +45,7 @@ public class SOIPolicyUtil {
 	Config config = configuration.Config.getInstance();
 	static CommandLine cmd;
 	
-	public static void main(String[] args) throws SAXException, IOException, ParseException, ParserConfigurationException {
+	public static void main(String[] args) throws SAXException, IOException, ParseException, ParserConfigurationException, InterruptedException {
 		
 		Commands commands = new Commands();
 		//get logging setting

@@ -91,6 +91,27 @@ public class Commands {
 		
 	}
 	
+	public String getServiceID(String[] args, boolean expected) throws SAXException, IOException, ParserConfigurationException{
+		//policy filter name is the second parameter
+    HTTPResponseData result;	
+	String serviceFilter = args[1];
+	String ContentType = "application/atom+xml";
+	String ActionURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/service?size=1000";
+	result = myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
+	
+	Document doc = processDom(result.responseBody);
+	String servicedetails = getPolicyID.getDom(doc, serviceFilter, expected);
+	
+	if(servicedetails == null){
+		logger.log(Level.WARNING, config.mess.NoService + serviceFilter);
+		return null;
+	}
+
+//TODO get right number
+	return servicedetails+"/entry";
+		
+	}
+	
 	public boolean getPolicy(String[] args, boolean expected, boolean printResponse) throws SAXException, IOException, ParserConfigurationException{
 		
 		HTTPResponseData result;
@@ -167,7 +188,7 @@ public class Commands {
 		
 	}
 	
-public void createPolicy(String[] args) throws SAXException, IOException, ParserConfigurationException{
+public void createPolicy(String[] args) throws SAXException, IOException, ParserConfigurationException, InterruptedException{
 		
 		String filename = args[1];
 		int actionParmCount = config.PolicyPropertyCount;
