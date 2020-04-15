@@ -40,7 +40,7 @@ public class Commands {
     HTTPResponseData result;	
 	String actionFilter = args[1];
 	String ContentType = "application/atom+xml";
-	String ActionURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicyAction?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
+	String ActionURL = config.UIProto+"://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicyAction?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
 	result = myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
 	Document doc = processDom(result.responseBody);
 	String policydetails = getPolicyID.getDom(doc, actionFilter, expected);
@@ -76,7 +76,7 @@ public class Commands {
     HTTPResponseData result;	
 	String actionFilter = args[1];
 	String ContentType = "application/atom+xml";
-	String ActionURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicyAction?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
+	String ActionURL = config.UIProto+"://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicyAction?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
 	result = myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
 	Document doc = processDom(result.responseBody);
 	String policydetails = getPolicyID.getDom(doc, actionFilter, expected);
@@ -96,7 +96,7 @@ public class Commands {
     HTTPResponseData result;	
 	String serviceFilter = args[1];
 	String ContentType = "application/atom+xml";
-	String ActionURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/service?size=1000";
+	String ActionURL = config.UIProto+"://"+config.SOIServer+":"+config.SOIPort+"/rest/service?size=1000";
 	result = myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
 	
 	Document doc = processDom(result.responseBody);
@@ -118,7 +118,7 @@ public class Commands {
 		String policydetails =  null;
 		String actionFilter = args[1];
 		String ContentType = "application/atom+xml";
-		String ActionURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicy?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
+		String ActionURL = config.UIProto+"://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicy?size=1&filter="+ URLEncoder.encode(actionFilter, "UTF-8");
 		result = myaction.getxml(config.UserName, config.Password, ActionURL, ContentType);
 		Document doc = processDom(result.responseBody);
 		policydetails = getPolicyID.getDom(doc, actionFilter, expected);
@@ -170,7 +170,7 @@ public class Commands {
 
         //Need to check that the action does not already exist. TODO
         boolean result;
-        String ActionURL = "http://"+config.SOIManager+":"+config.SOIManagerPort+"/sam/webservice";
+        String ActionURL = config.ManagerProto+"://"+config.SOIManager+":"+config.SOIManagerPort+"/sam/webservice";
         String contentType = "application/soap+xml;charset=UTF-8";
         Iterator<ActionPolicy> actionpIterator = allActionPolicies.iterator();
         while (actionpIterator.hasNext()) {
@@ -213,7 +213,7 @@ public void createPolicy(String[] args) throws SAXException, IOException, Parser
 
         //Need to check that the action does not already exist. TODO
         boolean result;
-        String PolicyURL = "http://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicy";
+        String PolicyURL = config.UIProto+"://"+config.SOIServer+":"+config.SOIPort+"/rest/escalationPolicy";
         String contentType = "application/xml";
         Iterator<EscalationPolicy> escalationpIterator = allEscalationPolicies.iterator();
         while (escalationpIterator.hasNext()) {

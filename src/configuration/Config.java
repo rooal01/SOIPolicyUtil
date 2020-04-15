@@ -18,6 +18,8 @@ public class Config {
 	public String SOIPort;
 	public String UserName;
 	public String Password;
+	public String ManagerProto;
+	public String UIProto;
 	public int PolicyPropertyCount;
 	public int ActionPropertyCount;
 	public Messages mess;
@@ -37,6 +39,8 @@ public class Config {
 		   SOIPort = this.configFile.getProperty("SOIPort");
 		   UserName = this.configFile.getProperty("SOIUserName");
 		   Password = this.configFile.getProperty("SOIPassword");
+		   ManagerProto = this.configFile.getProperty("ManagerProto");
+		   UIProto = this.configFile.getProperty("UIProto");
 		   PolicyPropertyCount = Integer.parseInt(this.configFile.getProperty("PolicyPropertyCount"));
 		   ActionPropertyCount = Integer.parseInt(this.configFile.getProperty("ActionPropertyCount"));
 		   
